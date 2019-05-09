@@ -24,20 +24,22 @@ public class GlobalExceptionHandler {
 
     @Bean
     public WebServerFactoryCustomizer<ConfigurableWebServerFactory> webServerFactoryCustomizer(){
-//        return (factory->{
-//            ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND, "/404.do");
-//            factory.addErrorPages( error404Page);
-//        });
+        return (factory->{
+            ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND, "/404.do");
+            factory.addErrorPages( error404Page);
+        });
 
-        WebServerFactoryCustomizer<ConfigurableWebServerFactory> result = new WebServerFactoryCustomizer<ConfigurableWebServerFactory>() {
-            @Override
-            public void customize(ConfigurableWebServerFactory factory) {
-                ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND, "/404.do");
-                factory.addErrorPages( error404Page);
-            }
-        };
+
+
+//        WebServerFactoryCustomizer<ConfigurableWebServerFactory> result = new WebServerFactoryCustomizer<ConfigurableWebServerFactory>() {
+//            @Override
+//            public void customize(ConfigurableWebServerFactory factory) {
+//                ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND, "/404.do");
+//                factory.addErrorPages( error404Page);
+//            }
+//        };
 
         //jdk 1.8 lambda
-        return  result;
+//        return  result;
     }
 }
