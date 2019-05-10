@@ -1,12 +1,17 @@
 package cww.alittlegirl.controller;
 
 import cww.alittlegirl.constants.Constants;
+import cww.alittlegirl.mq.Sender;
 import cww.alittlegirl.util.ResultBuilderUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.http.MediaType;
+import org.springframework.messaging.MessageChannel;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -15,6 +20,13 @@ import javax.annotation.Resource;
 public class DemoController {
     private static final Logger logger = LoggerFactory.getLogger(DemoController.class);
 
+
+    @Autowired
+    @Qualifier(value = "direct_rabbitmq_send_channel")
+    private MessageChannel directRabbitmqSendChannel;
+
+    @Autowired
+    private Sender sender;
 
     @Resource
     private RedisTemplate<String,String> redisTemplate;
@@ -35,6 +47,17 @@ public class DemoController {
         String value = ops.get("name");
         System.out.println(value);
         return ResultBuilderUtils.buildSuccess(Constants.SUCCESS);
+    }
+
+
+
+    @RequestMapping(value = "/rabbitmqDemo", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public void rabbitmqDemo() {
+        directRabbitmqSendChannel.send(MessageBuilder.withPayload("rabbitmqDemo message = hello").build());
+
+        //simple
+        sender.send();
     }
 
 
