@@ -8,6 +8,6 @@ public class DemoRabbitmqHandler {
 
 
     public void receiveDemoMessage(String message) {
-
+        System.out.println(message);
     }
 }
