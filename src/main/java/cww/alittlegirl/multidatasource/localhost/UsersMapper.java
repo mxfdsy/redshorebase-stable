@@ -1,4 +1,4 @@
-package cww.alittlegirl.dao;
+package cww.alittlegirl.multidatasource.localhost;
 
 import cww.alittlegirl.model.Users;
 
