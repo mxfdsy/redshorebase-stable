@@ -13,21 +13,21 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from enjoy_order
+    from cww_order
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from enjoy_order
+    delete from cww_order
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cww.alittlegirl.model.Orders" >
-    insert into enjoy_order (id, name, user_id, 
+    insert into cww_order (id, name, user_id, 
       account)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
       #{account,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="cww.alittlegirl.model.Orders" >
-    insert into enjoy_order
+    insert into cww_order
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -58,7 +58,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="cww.alittlegirl.model.Orders" >
-    update enjoy_order
+    update cww_order
     <set >
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
@@ -73,7 +73,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cww.alittlegirl.model.Orders" >
-    update enjoy_order
+    update cww_order
     set name = #{name,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=INTEGER},
       account = #{account,jdbcType=INTEGER}

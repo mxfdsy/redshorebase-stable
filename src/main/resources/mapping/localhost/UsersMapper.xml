@@ -12,22 +12,22 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from enjoy_user
+    from cww_user
     where id = #{id,jdbcType=INTEGER}
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from enjoy_user
+    delete from cww_user
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="cww.alittlegirl.model.Users" >
-    insert into enjoy_user (id, passwd, username
+    insert into cww_user (id, passwd, username
       )
     values (#{id,jdbcType=INTEGER}, #{passwd,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="cww.alittlegirl.model.Users" >
-    insert into enjoy_user
+    insert into cww_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -52,7 +52,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="cww.alittlegirl.model.Users" >
-    update enjoy_user
+    update cww_user
     <set >
       <if test="passwd != null" >
         passwd = #{passwd,jdbcType=VARCHAR},
@@ -64,7 +64,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cww.alittlegirl.model.Users" >
-    update enjoy_user
+    update cww_user
     set passwd = #{passwd,jdbcType=VARCHAR},
       username = #{username,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
