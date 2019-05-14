@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cww.alittlegirl.multidatasource.localhost.UsersMapper" >
-  <resultMap id="BaseResultMap" type="cww.alittlegirl.model.Users" >
+<mapper namespace="cww.redshorebase.multidatasource.localhost.UsersMapper" >
+  <resultMap id="BaseResultMap" type="cww.redshorebase.model.Users" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="passwd" property="passwd" jdbcType="VARCHAR" />
     <result column="username" property="username" jdbcType="VARCHAR" />
@@ -20,13 +20,13 @@
     delete from cww_user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cww.alittlegirl.model.Users" >
+  <insert id="insert" parameterType="cww.redshorebase.model.Users" >
     insert into cww_user (id, passwd, username
       )
     values (#{id,jdbcType=INTEGER}, #{passwd,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="cww.alittlegirl.model.Users" >
+  <insert id="insertSelective" parameterType="cww.redshorebase.model.Users" >
     insert into cww_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -51,7 +51,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cww.alittlegirl.model.Users" >
+  <update id="updateByPrimaryKeySelective" parameterType="cww.redshorebase.model.Users" >
     update cww_user
     <set >
       <if test="passwd != null" >
@@ -63,7 +63,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cww.alittlegirl.model.Users" >
+  <update id="updateByPrimaryKey" parameterType="cww.redshorebase.model.Users" >
     update cww_user
     set passwd = #{passwd,jdbcType=VARCHAR},
       username = #{username,jdbcType=VARCHAR}

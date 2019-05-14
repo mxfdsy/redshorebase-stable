@@ -1,0 +1,5 @@
+org.springframework.context.ApplicationContextInitializer=\
+cww.redshorebase.listener.EnjoyApplicationContextInitializer
+
+org.springframework.boot.SpringApplicationRunListener=\
+cww.redshorebase.listener.EnjoySpringApplicationRunListener

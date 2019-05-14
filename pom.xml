@@ -9,11 +9,11 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>cww</groupId>
-    <artifactId>alittlegirl</artifactId>
+    <artifactId>redshorebase-001</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>alittlegirl</name>
-    <description>alittlegirl</description>
+    <name>redshorebase</name>
+    <description>redshorebase</description>
 
     <properties>
         <java.version>1.8</java.version>
