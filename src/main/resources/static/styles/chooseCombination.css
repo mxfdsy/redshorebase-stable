@@ -1,0 +1,20 @@
+.new-combination-box {
+    margin: 40px 120px;
+}
+
+.combination-item {
+    display: block;
+    margin-bottom: 15px;
+    min-height: 38px
+}
+
+.combination-item .combination-item-name {
+    line-height: 36px;
+    vertical-align: middle
+}
+
+.combination-item .combination-item-icon {
+    vertical-align: middle;
+    line-height: 38px;
+    font-size: 24px
+}

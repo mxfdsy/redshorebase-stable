@@ -1,0 +1,20 @@
+
+.layui-tab-title .layui-this {
+    background-color: #fff;
+}
+
+.layui-tab-title {
+    background-color: #F2F2F2;
+}
+
+.layui-input.layui-input-no-border {
+    border: none;
+}
+
+.layui-textarea.layui-textarea-no-border {
+    border: none;
+}
+
+.layui-card-body {
+    padding: 10px;
+}

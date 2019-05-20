@@ -1,0 +1,35 @@
+
+.role-second-menu {
+    border-right: 1px solid #e6e6e6;
+    line-height: 45px;
+    padding-right: 10px;
+}
+
+/*.layui-colla-content{
+    padding: 0 15px;
+}*/
+.role-third-menu {
+    margin-left: 10px;
+}
+
+.layui-show .layui-row {
+    border-bottom: 1px solid #efefef;
+}
+
+.role-first-menu .layui-input-inline {
+    height: 45px;
+}
+
+/*.layui-colla-title-hasmore{
+    position: relative;
+    padding-left: 15px;
+}
+.layui-colla-title-hasmore .layui-colla-icon{
+    display: none;
+}
+.layui-colla-title-hasmore .layui-colla-title-more{
+    position: absolute;
+    right: 15px;
+    top: 0;
+    color: #4b50ff;
+}*/

@@ -1,14 +1,14 @@
 package cww.redshorebase.controller;
 
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class ErrorController {
 
-    @RequestMapping("/404.do")
+    @RequestMapping("/login")
     public Object error_404() {
-        return "这是404的报错页面";
+        return "login/login.html";
     }
 }

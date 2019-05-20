@@ -1,0 +1,16 @@
+.jstree-default > .jstree-striped {
+    background: none;
+}
+
+.jstree-default .jstree-anchor {
+    line-height: 18px;
+    height: 18px;
+    font-size: 12px;
+}
+
+.jstree-default .jstree-themeicon {
+    height: 17px !important;
+    width: 19px !important;
+    background: url('themeicon.svg') 0 0 no-repeat;
+    background-size: 17px 17px;
+}

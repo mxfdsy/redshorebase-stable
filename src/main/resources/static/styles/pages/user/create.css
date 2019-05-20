@@ -1,0 +1,18 @@
+
+.layui-icon.delete-icon {
+    font-size: 20px;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.layui-layer-content .layui-card-body {
+    padding-bottom: 0;
+}
+
+.layui-layer-content .layui-tab-content {
+    padding-bottom: 0;
+}
+
+.layui-layer-content .layui-tab {
+    margin-bottom: 0;
+}
