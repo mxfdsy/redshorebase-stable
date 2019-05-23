@@ -106,7 +106,7 @@
         //提交
         form.on('submit(LAY-user-login-submit)', function (obj) {
             $.ajax({
-                url: "/login/check", //登录接口
+                url: "/login", //登录接口
                 type: "post",
                 data: JSON.stringify(obj),
                 dataType: "json",

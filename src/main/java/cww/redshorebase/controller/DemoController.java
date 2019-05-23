@@ -1,5 +1,6 @@
 package cww.redshorebase.controller;
 
+import cww.redshorebase.config.JedisUtils;
 import cww.redshorebase.constants.Constants;
 import cww.redshorebase.model.Orders;
 import cww.redshorebase.model.Users;
@@ -11,7 +12,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,6 +39,9 @@ public class DemoController {
     @Autowired
     private Sender sender;
 
+    @Autowired
+    private JedisUtils jedisUtils;
+
     @Resource
     private RedisTemplate<String,String> redisTemplate;
 
@@ -53,10 +56,13 @@ public class DemoController {
     @RequestMapping(value = "/redisDemo", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String redisDemo() {
-        ValueOperations<String, String> ops = redisTemplate.opsForValue();
-        ops.set("name", "enjoy");
-        String value = ops.get("name");
-        System.out.println(value);
+//        ValueOperations<String, String> ops = redisTemplate.opsForValue();
+//        ops.set("name", "enjoy");
+//        String value = ops.get("name");
+//        System.out.println(value);
+        jedisUtils.set("cww999", "999");
+        String cww999 = jedisUtils.get("cww999");
+        System.out.println(cww999);
         return ResultBuilderUtils.buildSuccess(Constants.SUCCESS);
     }
 
