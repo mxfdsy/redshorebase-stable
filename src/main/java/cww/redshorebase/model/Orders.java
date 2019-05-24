@@ -1,6 +1,8 @@
 package cww.redshorebase.model;
 
-public class Orders {
+import java.io.Serializable;
+
+public class Orders implements Serializable {
     private Integer id;
 
     private String name;

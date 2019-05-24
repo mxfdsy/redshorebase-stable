@@ -19,6 +19,7 @@ public class RedPackController {
     @ResponseBody
     public String redPack() {
         redPackService.setRedPackToRedis();
+
         return ResultBuilderUtils.buildSuccess(Constants.SUCCESS);
     }
 }
