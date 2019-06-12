@@ -4,7 +4,9 @@ import cww.redshorebase.config.JedisUtils;
 import cww.redshorebase.constants.Constants;
 import cww.redshorebase.model.Orders;
 import cww.redshorebase.model.Users;
-import cww.redshorebase.mq.Sender;
+import cww.redshorebase.mq.Direct.DirectSender;
+import cww.redshorebase.mq.fanout.FanoutSender;
+import cww.redshorebase.mq.topic.TopicSender;
 import cww.redshorebase.multidatasource.aliyun.OrdersMapper;
 import cww.redshorebase.multidatasource.localhost.UsersMapper;
 import cww.redshorebase.service.DemoService;
@@ -41,10 +43,16 @@ public class DemoController {
     private OrdersMapper ordersMapper;
 
     @Autowired
-    private Sender sender;
+    private DirectSender directSender;
+
+    @Autowired
+    private FanoutSender fanoutSender;
 
     @Autowired
     private JedisUtils jedisUtils;
+
+    @Autowired
+    private TopicSender topicSender ;
 
     @Resource
     private RedisTemplate<String, String> redisTemplate;
@@ -57,7 +65,7 @@ public class DemoController {
     }
 
 
-    @RequestMapping(value = "/redisDemo", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/jedisDemo", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String redisDemo() {
 //        ValueOperations<String, String> ops = redisTemplate.opsForValue();
@@ -71,14 +79,31 @@ public class DemoController {
     }
 
 
-    @RequestMapping(value = "/rabbitmqDemo", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/rabbitmqDirect", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public void rabbitmqDemo() {
+    public void rabbitmqDirect() {
 //        directRabbitmqSendChannel.send(MessageBuilder.withPayload("rabbitmqDemo message = hello").build());
-//
-        //simple
-        sender.send();
+        directSender.send("我是点对点的消息");
     }
+
+    @RequestMapping(value = "/rabbitmqfanout", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public void rabbitmqFanout() {
+//        directRabbitmqSendChannel.send(MessageBuilder.withPayload("rabbitmqDemo message = hello").build());
+        fanoutSender.fanoutSend("我是fanout的消息");
+    }
+
+    @RequestMapping(value = "/rabbitmqTopic", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public void rabbitmqTopic() {
+//        directRabbitmqSendChannel.send(MessageBuilder.withPayload("rabbitmqDemo message = hello").build());
+//        topicSender.fanoutSend("我是fanout的消息");
+
+        topicSender.send();
+    }
+
+
+
 
 
     /**
@@ -103,6 +128,11 @@ public class DemoController {
         ordersMapper.insert(orders);
     }
 
+    /**
+     * redis 缓存
+     * @param payload
+     * @return
+     */
     @RequestMapping(value = "/cacheDemo", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String cacheDemo(String payload) {

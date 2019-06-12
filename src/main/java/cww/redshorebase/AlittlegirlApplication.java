@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-@MapperScan("cww.redshorebase.dao")
+@MapperScan("cww.redshorebase.multidatasource")
 //@ImportResource(value = {
 //        "classpath:rabbitmq/*.xml"
 //})
@@ -18,5 +18,4 @@ public class AlittlegirlApplication {
     public static void main(String[] args) {
         SpringApplication.run(AlittlegirlApplication.class, args);
     }
-
 }
