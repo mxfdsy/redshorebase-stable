@@ -4,6 +4,7 @@ import cww.redshorebase.config.JedisUtils;
 import cww.redshorebase.constants.Constants;
 import cww.redshorebase.model.Orders;
 import cww.redshorebase.model.Users;
+import cww.redshorebase.mq.DelayQueue.DelayQueueSender;
 import cww.redshorebase.mq.Direct.DirectSender;
 import cww.redshorebase.mq.fanout.FanoutSender;
 import cww.redshorebase.mq.topic.TopicSender;
@@ -54,6 +55,10 @@ public class DemoController {
     @Autowired
     private TopicSender topicSender ;
 
+
+    @Autowired
+    private DelayQueueSender delayQueueSender;
+
     @Resource
     private RedisTemplate<String, String> redisTemplate;
 
@@ -64,7 +69,10 @@ public class DemoController {
         return ResultBuilderUtils.buildSuccess(Constants.SUCCESS);
     }
 
-
+    /**
+     * redis
+     * @return
+     */
     @RequestMapping(value = "/jedisDemo", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String redisDemo() {
@@ -79,6 +87,9 @@ public class DemoController {
     }
 
 
+    /**
+     * rabbimmq demo
+     */
     @RequestMapping(value = "/rabbitmqDirect", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public void rabbitmqDirect() {
@@ -102,6 +113,34 @@ public class DemoController {
         topicSender.send();
     }
 
+
+    /**
+     * 延迟队列
+     */
+    @RequestMapping(value = "/DelayQueue", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public void DelayQueue() {
+//        directRabbitmqSendChannel.send(MessageBuilder.withPayload("rabbitmqDemo message = hello").build());
+        try {
+            delayQueueSender.testDelayQueuePerMessageTTL();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+//    /**
+//     * 延时重试
+//     */
+//    @RequestMapping(value = "/retry", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+//    @ResponseBody
+//    public void retry() {
+////        directRabbitmqSendChannel.send(MessageBuilder.withPayload("rabbitmqDemo message = hello").build());
+//        try {
+//            delayQueueSender.retry();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 
 
