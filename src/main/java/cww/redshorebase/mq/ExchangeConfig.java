@@ -145,35 +145,36 @@ public class ExchangeConfig {
     @Bean
     Queue delayQueuePerMessageTTL() {
         return QueueBuilder.durable("delay_queue_per_message_ttl")
-                .withArgument("x-dead-letter-exchange", "Dead-Letter-Exchange")
-                .withArgument("x-dead-letter-routing-key", "cww_delayQueue")
+                .withArgument("x-dead-letter-exchange", "xxx-exchange")
+                .withArgument("x-dead-letter-routing-key", "delay_process_queue")
                 .build();
     }
     @Bean
     Queue delayProcessQueue() {
-        return QueueBuilder.durable("delay_process_queue").build();
+        return QueueBuilder.durable("delay_process_queue")
+                .build();
     }
     @Bean
     DirectExchange delayExchange() {
-        return new DirectExchange("Dead-Letter-Exchange");
+        return new DirectExchange("xxx-exchange");
     }
     @Bean
     Binding dlxBinding() {
         return BindingBuilder
                 .bind(delayProcessQueue())
                 .to(delayExchange())
-                .with("cww_delayQueue");
+                .with("delay_process_queue");
     }
 
 
-
-    @Bean
-    Queue delayQueuePerQueueTTL() {
-        return QueueBuilder.durable("delay_queue_per_queue_ttl")
-                .withArgument("x-dead-letter-exchange", "Dead-Letter-Exchange")
-                .withArgument("x-dead-letter-routing-key", "delay_process_queue")
-                .withArgument("x-message-ttl", 5000).build();
-    }
+//
+//    @Bean
+//    Queue delayQueuePerQueueTTL() {
+//        return QueueBuilder.durable("delay_queue_per_queue_ttl")
+//                .withArgument("x-dead-letter-exchange", "Dead-Letter-Exchange")
+//                .withArgument("x-dead-letter-routing-key", "delay_process_queue")
+//                .withArgument("x-message-ttl", 5000).build();
+//    }
 
 
 
