@@ -167,17 +167,6 @@ public class ExchangeConfig {
     }
 
 
-//
-//    @Bean
-//    Queue delayQueuePerQueueTTL() {
-//        return QueueBuilder.durable("delay_queue_per_queue_ttl")
-//                .withArgument("x-dead-letter-exchange", "Dead-Letter-Exchange")
-//                .withArgument("x-dead-letter-routing-key", "delay_process_queue")
-//                .withArgument("x-message-ttl", 5000).build();
-//    }
-
-
-
     /**
      * ===============以上是延迟队列交换器===============
      */
