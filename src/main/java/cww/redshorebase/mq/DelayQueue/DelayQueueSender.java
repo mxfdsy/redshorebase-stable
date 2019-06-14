@@ -26,4 +26,19 @@ public class DelayQueueSender {
                     new ExpirationMessagePostProcessor(expiration));
         }
     }
+
+
+
+    /**
+     * 延迟重试
+     *
+     * @param
+     */
+    public void retry() throws InterruptedException {
+        for (int i = 5; i <= 7; i++) {
+            long expiration = i * 1000;
+            rabbitTemplate.convertAndSend("will_error_q", "FAIL_MESSAGE");
+        }
+    }
+
 }

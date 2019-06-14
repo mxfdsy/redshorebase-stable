@@ -1,6 +1,10 @@
 package cww.redshorebase.mq;
 
+import cww.redshorebase.mq.DelayQueue.ProcessReceiver;
 import org.springframework.amqp.core.*;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
+import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -154,6 +158,7 @@ public class ExchangeConfig {
         return QueueBuilder.durable("delay_process_queue")
                 .build();
     }
+
     @Bean
     DirectExchange delayExchange() {
         return new DirectExchange("xxx-exchange");
@@ -170,6 +175,46 @@ public class ExchangeConfig {
     /**
      * ===============以上是延迟队列交换器===============
      */
+
+
+
+    @Bean
+    Queue WillErrorQ() {
+        return new Queue("will_error_q");
+    }
+
+
+    /**
+     * 创建delay_queue_per_queue_ttl队列
+     *
+     * @return
+     */
+    @Bean
+    Queue delayQueuePerQueueTTL() {
+        return QueueBuilder.durable("xxxxx")
+                .withArgument("x-dead-letter-exchange", "xxx-exchange") // DLX
+                .withArgument("x-dead-letter-routing-key", "delay_process_queue") // dead letter携带的routing key
+                .withArgument("x-message-ttl", 2000) // 设置队列的过期时间
+                .build();}
+
+
+
+    /**
+     * 定义delay_process_queue队列的Listener Container
+     *
+     * @param connectionFactory
+     * @return
+     */
+    @Bean
+    SimpleMessageListenerContainer processContainer(ConnectionFactory connectionFactory, ProcessReceiver processReceiver) {
+        SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
+        container.setConnectionFactory(connectionFactory);
+        container.setQueueNames("will_error_q"); //
+        container.setMessageListener(new MessageListenerAdapter(processReceiver));
+        return container;
+    }
+
+
 
 
 }

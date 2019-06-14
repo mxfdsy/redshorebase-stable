@@ -128,19 +128,19 @@ public class DemoController {
         }
     }
 
-//    /**
-//     * 延时重试
-//     */
-//    @RequestMapping(value = "/retry", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseBody
-//    public void retry() {
-////        directRabbitmqSendChannel.send(MessageBuilder.withPayload("rabbitmqDemo message = hello").build());
-//        try {
-//            delayQueueSender.retry();
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    /**
+     * 延时重试
+     */
+    @RequestMapping(value = "/retry", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public void retry() {
+//        directRabbitmqSendChannel.send(MessageBuilder.withPayload("rabbitmqDemo message = hello").build());
+        try {
+            delayQueueSender.retry();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 
