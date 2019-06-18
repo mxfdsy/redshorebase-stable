@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
 public class DemoController {
@@ -53,7 +57,7 @@ public class DemoController {
     private JedisUtils jedisUtils;
 
     @Autowired
-    private TopicSender topicSender ;
+    private TopicSender topicSender;
 
 
     @Autowired
@@ -71,6 +75,7 @@ public class DemoController {
 
     /**
      * redis
+     *
      * @return
      */
     @RequestMapping(value = "/jedisDemo", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -86,6 +91,23 @@ public class DemoController {
         return ResultBuilderUtils.buildSuccess(Constants.SUCCESS);
     }
 
+    /**
+     * redis rank
+     */
+
+    @RequestMapping(value = "/redisRank", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String redisRank( String payload) {
+        redisTemplate.delete("zset001");
+        redisTemplate.opsForZSet().incrementScore("zset001", "001", 100);
+        redisTemplate.opsForZSet().incrementScore("zset001", "002", 50);
+        Set<ZSetOperations.TypedTuple<String>> zsetList = redisTemplate.opsForZSet().reverseRangeWithScores("zset001", 0, -1);
+
+        List<Integer> goodsIdList = zsetList.stream().map(x -> Integer.parseInt(x.getValue())).collect(Collectors.toList());
+
+
+        return ResultBuilderUtils.buildSuccess(Constants.SUCCESS);
+    }
 
     /**
      * rabbimmq demo
@@ -143,8 +165,6 @@ public class DemoController {
     }
 
 
-
-
     /**
      * 分布式事物
      */
@@ -169,6 +189,7 @@ public class DemoController {
 
     /**
      * redis 缓存
+     *
      * @param payload
      * @return
      */
