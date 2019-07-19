@@ -25,9 +25,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @RestController
 public class DemoController {
@@ -88,6 +88,32 @@ public class DemoController {
         jedisUtils.set("cww999", "999");
         String cww999 = jedisUtils.get("cww999");
         System.out.println(cww999);
+
+
+
+        List<String> list1=new ArrayList<String>();
+        list1.add("a1");
+        list1.add("a2");
+        list1.add("a3");
+
+        List<String> list2=new ArrayList<String>();
+        list2.add("b1");
+        list2.add("b2");
+        list2.add("b3");
+
+
+
+        redisTemplate.opsForList().leftPushAll("listkey1",list1);
+        redisTemplate.opsForList().rightPushAll("listkey2",list2);
+
+
+        String listkey6 = redisTemplate.opsForList().leftPop("listkey6");
+
+        List<String> listkey1 = redisTemplate.opsForList().range("listkey1", 0, -1);
+        List<String> listkey9 = redisTemplate.opsForList().range("listkey9", 0, -1);
+        String listkey2 = redisTemplate.opsForList().rightPop("listkey2");
+
+
         return ResultBuilderUtils.buildSuccess(Constants.SUCCESS);
     }
 
@@ -101,11 +127,19 @@ public class DemoController {
         redisTemplate.delete("zset001");
         redisTemplate.opsForZSet().incrementScore("zset001", "001", 100);
         redisTemplate.opsForZSet().incrementScore("zset001", "002", 50);
-        Set<ZSetOperations.TypedTuple<String>> zsetList = redisTemplate.opsForZSet().reverseRangeWithScores("zset001", 0, -1);
+        Set<ZSetOperations.TypedTuple<String>> daoList = redisTemplate.opsForZSet().reverseRangeWithScores("zset001", 0, -1);
+        Set<ZSetOperations.TypedTuple<String>> zhengList = redisTemplate.opsForZSet().rangeWithScores("zset001", 0, -1);
 
-        List<Integer> goodsIdList = zsetList.stream().map(x -> Integer.parseInt(x.getValue())).collect(Collectors.toList());
-
-
+        System.out.println("daoList");
+        daoList.forEach(n->{
+            System.out.println(n.getScore());
+            System.out.println(n.getValue());
+        });
+        System.out.println("zhengList");
+        zhengList.forEach(n->{
+            System.out.println(n.getScore());
+            System.out.println(n.getValue());
+        });
         return ResultBuilderUtils.buildSuccess(Constants.SUCCESS);
     }
 

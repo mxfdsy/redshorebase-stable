@@ -105,7 +105,7 @@ public class RabbitmqConfig {
     public RabbitListenerErrorHandler rabbitListenerErrorHandler(){
         return (amqpMessage, message, exception) -> {
 
-            System.out.println("-------------------------------------"+message);
+            System.out.println("-------------------------------------" + message);
 
             throw new AmqpRejectAndDontRequeueException(exception.getMessage(), exception.getCause());
         };
