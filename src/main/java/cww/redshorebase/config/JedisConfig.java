@@ -19,7 +19,7 @@ public class JedisConfig {
     private String auth;
 
     @Bean
-    public  JedisUtils getJedis() {
+    public JedisUtils getJedis() {
         return new JedisUtils(ip, port, auth);
     }
 

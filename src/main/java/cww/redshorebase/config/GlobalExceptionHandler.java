@@ -23,12 +23,11 @@ public class GlobalExceptionHandler {
     }
 
     @Bean
-    public WebServerFactoryCustomizer<ConfigurableWebServerFactory> webServerFactoryCustomizer(){
-        return (factory->{
+    public WebServerFactoryCustomizer<ConfigurableWebServerFactory> webServerFactoryCustomizer() {
+        return (factory -> {
             ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND, "/login");
-            factory.addErrorPages( error404Page);
+            factory.addErrorPages(error404Page);
         });
-
 
 
 //        WebServerFactoryCustomizer<ConfigurableWebServerFactory> result = new WebServerFactoryCustomizer<ConfigurableWebServerFactory>() {

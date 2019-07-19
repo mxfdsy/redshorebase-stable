@@ -8,7 +8,6 @@
         http://www.springframework.org/schema/rabbit/spring-rabbit.xsd">
 
 
-
     <rabbit:queue name="direct.rabbitmq.queue"/>
     <rabbit:direct-exchange name="direct.demo.exchange">
         <rabbit:bindings>

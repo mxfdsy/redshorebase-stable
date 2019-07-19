@@ -90,21 +90,19 @@ public class DemoController {
         System.out.println(cww999);
 
 
-
-        List<String> list1=new ArrayList<String>();
+        List<String> list1 = new ArrayList<String>();
         list1.add("a1");
         list1.add("a2");
         list1.add("a3");
 
-        List<String> list2=new ArrayList<String>();
+        List<String> list2 = new ArrayList<String>();
         list2.add("b1");
         list2.add("b2");
         list2.add("b3");
 
 
-
-        redisTemplate.opsForList().leftPushAll("listkey1",list1);
-        redisTemplate.opsForList().rightPushAll("listkey2",list2);
+        redisTemplate.opsForList().leftPushAll("listkey1", list1);
+        redisTemplate.opsForList().rightPushAll("listkey2", list2);
 
 
         String listkey6 = redisTemplate.opsForList().leftPop("listkey6");
@@ -123,7 +121,7 @@ public class DemoController {
 
     @RequestMapping(value = "/redisRank", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String redisRank( String payload) {
+    public String redisRank(String payload) {
         redisTemplate.delete("zset001");
         redisTemplate.opsForZSet().incrementScore("zset001", "001", 100);
         redisTemplate.opsForZSet().incrementScore("zset001", "002", 50);
@@ -131,12 +129,12 @@ public class DemoController {
         Set<ZSetOperations.TypedTuple<String>> zhengList = redisTemplate.opsForZSet().rangeWithScores("zset001", 0, -1);
 
         System.out.println("daoList");
-        daoList.forEach(n->{
+        daoList.forEach(n -> {
             System.out.println(n.getScore());
             System.out.println(n.getValue());
         });
         System.out.println("zhengList");
-        zhengList.forEach(n->{
+        zhengList.forEach(n -> {
             System.out.println(n.getScore());
             System.out.println(n.getValue());
         });

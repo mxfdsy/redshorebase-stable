@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 public class RedPackServiceImplTest {
     @Autowired
-    private RedPackService redPackService ;
+    private RedPackService redPackService;
 
 
     @Test

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 public class EnjoyApplicationRunner implements ApplicationRunner {
     /**
      * 7 -----(8在 EnjoyCommandLineRunner)
+     *
      * @param args
      * @throws Exception
      */

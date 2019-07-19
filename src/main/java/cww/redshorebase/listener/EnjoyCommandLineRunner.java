@@ -10,11 +10,12 @@ import java.util.Arrays;
 public class EnjoyCommandLineRunner implements CommandLineRunner {
     /**
      * 8
+     *
      * @param args
      * @throws Exception
      */
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("EnjoyCommandLineRunner.run()执行了"+ Arrays.asList(args));
+        System.out.println("EnjoyCommandLineRunner.run()执行了" + Arrays.asList(args));
     }
 }

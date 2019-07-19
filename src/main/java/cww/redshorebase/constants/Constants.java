@@ -48,7 +48,7 @@ public class Constants {
     public static final String MALL_LIST = "mall_list";
 
     public static final String CURRENT_USER_SELECTED_SHOP = "current_user_selected_shop";
-    
+
     /************************** Catalog management ***********************/
     public static final String ROOT_CATALOG = "root";
 

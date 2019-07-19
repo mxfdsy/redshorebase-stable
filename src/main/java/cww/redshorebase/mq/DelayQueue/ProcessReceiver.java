@@ -26,15 +26,12 @@ public class ProcessReceiver implements ChannelAwareMessageListener {
     public void onMessage(Message message, Channel channel) throws Exception {
         try {
             processMessage(message);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
 
 
 //             如果发生了异常，则将该消息重定向到缓冲队列，会在一定延迟之后自动重做
             rabbitTemplate.convertAndSend("xxxxx",
                     new String(message.getBody()));
-
-
 
 
         }

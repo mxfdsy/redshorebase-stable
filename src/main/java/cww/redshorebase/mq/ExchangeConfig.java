@@ -153,6 +153,7 @@ public class ExchangeConfig {
                 .withArgument("x-dead-letter-routing-key", "delay_process_queue")
                 .build();
     }
+
     @Bean
     Queue delayProcessQueue() {
         return QueueBuilder.durable("delay_process_queue")
@@ -163,6 +164,7 @@ public class ExchangeConfig {
     DirectExchange delayExchange() {
         return new DirectExchange("xxx-exchange");
     }
+
     @Bean
     Binding dlxBinding() {
         return BindingBuilder
@@ -175,7 +177,6 @@ public class ExchangeConfig {
     /**
      * ===============以上是延迟队列交换器===============
      */
-
 
 
     @Bean
@@ -195,8 +196,8 @@ public class ExchangeConfig {
                 .withArgument("x-dead-letter-exchange", "xxx-exchange") // DLX
                 .withArgument("x-dead-letter-routing-key", "delay_process_queue") // dead letter携带的routing key
                 .withArgument("x-message-ttl", 2000) // 设置队列的过期时间
-                .build();}
-
+                .build();
+    }
 
 
     /**
@@ -213,8 +214,6 @@ public class ExchangeConfig {
         container.setMessageListener(new MessageListenerAdapter(processReceiver));
         return container;
     }
-
-
 
 
 }

@@ -33,9 +33,8 @@ public class RabbitmqConfig {
     private boolean publisherConfirms;
 
 
-
     @Bean
-    public RabbitAdmin rabbitAdmin(ConnectionFactory connectionFactory){
+    public RabbitAdmin rabbitAdmin(ConnectionFactory connectionFactory) {
         return new RabbitAdmin(connectionFactory);
     }
 
@@ -44,7 +43,7 @@ public class RabbitmqConfig {
     public ConnectionFactory connectionFactory() {
 
         CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
-        connectionFactory.setAddresses(addresses+":"+port);
+        connectionFactory.setAddresses(addresses + ":" + port);
         connectionFactory.setUsername(username);
         connectionFactory.setPassword(password);
         connectionFactory.setVirtualHost(virtualHost);
@@ -63,8 +62,8 @@ public class RabbitmqConfig {
     }
 
     @Bean
-    public RabbitTemplate.ConfirmCallback confirmCallback(){
-        return new RabbitTemplate.ConfirmCallback(){
+    public RabbitTemplate.ConfirmCallback confirmCallback() {
+        return new RabbitTemplate.ConfirmCallback() {
 
             @Override
             public void confirm(CorrelationData correlationData,
@@ -73,15 +72,15 @@ public class RabbitmqConfig {
                     System.out.println("发送者确认发送给mq成功");
                 } else {
                     //处理失败的消息
-                    System.out.println("发送者发送给mq失败,考虑重发:"+cause);
+                    System.out.println("发送者发送给mq失败,考虑重发:" + cause);
                 }
             }
         };
     }
 
     @Bean
-    public RabbitTemplate.ReturnCallback returnCallback(){
-        return new RabbitTemplate.ReturnCallback(){
+    public RabbitTemplate.ReturnCallback returnCallback() {
+        return new RabbitTemplate.ReturnCallback() {
 
             @Override
             public void returnedMessage(Message message,
@@ -90,11 +89,11 @@ public class RabbitmqConfig {
                                         String exchange,
                                         String routingKey) {
                 System.out.println("无法路由的消息，需要考虑另外处理。");
-                System.out.println("Returned replyText："+replyText);
-                System.out.println("Returned exchange："+exchange);
-                System.out.println("Returned routingKey："+routingKey);
-                String msgJson  = new String(message.getBody());
-                System.out.println("Returned Message："+msgJson);
+                System.out.println("Returned replyText：" + replyText);
+                System.out.println("Returned exchange：" + exchange);
+                System.out.println("Returned routingKey：" + routingKey);
+                String msgJson = new String(message.getBody());
+                System.out.println("Returned Message：" + msgJson);
             }
         };
 
@@ -102,7 +101,7 @@ public class RabbitmqConfig {
     }
 
     @Bean
-    public RabbitListenerErrorHandler rabbitListenerErrorHandler(){
+    public RabbitListenerErrorHandler rabbitListenerErrorHandler() {
         return (amqpMessage, message, exception) -> {
 
             System.out.println("-------------------------------------" + message);

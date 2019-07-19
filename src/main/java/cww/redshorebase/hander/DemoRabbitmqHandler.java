@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 public class DemoRabbitmqHandler {
 
 
-
     public void receiveDemoMessage(String message) {
         System.out.println(message);
     }

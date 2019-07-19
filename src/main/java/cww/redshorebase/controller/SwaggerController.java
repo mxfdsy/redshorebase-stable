@@ -11,14 +11,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping(value="/swagger")
+@RequestMapping(value = "/swagger")
 public class SwaggerController {
 
-    @ApiOperation(value="获取用户信息", notes="根据id来获取用户详细信息")
-    @ApiImplicitParam(name="id", value="用户ID", required=true, dataType="String")
-    @RequestMapping(value="/{id}", method= RequestMethod.GET)
-    public Map<String,String> getInfo(@PathVariable String id) {
-        Map<String ,String> map = new HashMap<String, String>();
+    @ApiOperation(value = "获取用户信息", notes = "根据id来获取用户详细信息")
+    @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "String")
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public Map<String, String> getInfo(@PathVariable String id) {
+        Map<String, String> map = new HashMap<String, String>();
         map.put("name", "lison");
         map.put("age", "38");
         return map;

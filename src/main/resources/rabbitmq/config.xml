@@ -17,6 +17,6 @@
     <int:channel id="amqpAsynFailedMessageChannel"/>
     <int:service-activator input-channel="amqpAsynFailedMessageChannel" ref="amqpAsynFailedMessageHandler"/>
 
-    <int:channel id="failedMessageChannel" />
-    <int:service-activator input-channel="failedMessageChannel"	ref="failedMessageHandler" />
+    <int:channel id="failedMessageChannel"/>
+    <int:service-activator input-channel="failedMessageChannel" ref="failedMessageHandler"/>
 </beans>

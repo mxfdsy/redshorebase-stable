@@ -31,19 +31,19 @@ public class DataSource1Config {
             throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-         bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapping/localhost/*.xml"));
+        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapping/localhost/*.xml"));
         return bean.getObject();
     }
 
     @Bean(name = "localhostDataSource")
     @Primary
     public DataSource testDataSource(DBConfig1 config1) {
-        MysqlXADataSource mysqlXADataSource=new MysqlXADataSource();
+        MysqlXADataSource mysqlXADataSource = new MysqlXADataSource();
         mysqlXADataSource.setUrl(config1.getJdbcUrl());
         mysqlXADataSource.setPassword(config1.getPassword());
         mysqlXADataSource.setUser(config1.getUsername());
 
-        AtomikosDataSourceBean atomikosDataSourceBean=new AtomikosDataSourceBean();
+        AtomikosDataSourceBean atomikosDataSourceBean = new AtomikosDataSourceBean();
         atomikosDataSourceBean.setXaDataSource(mysqlXADataSource);
         atomikosDataSourceBean.setUniqueResourceName("localhostDatasource");
         return atomikosDataSourceBean;

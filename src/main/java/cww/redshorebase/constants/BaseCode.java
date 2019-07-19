@@ -33,13 +33,13 @@ public enum BaseCode {
     CREATE_MENU_ERROR_EXIST(12001, "该菜单已存在"),
     MENU_DO_NOT_EXIST(12002, "菜单不存在"),
 
-    NO_SUCH_ROLE_NAME_PERMISSION(12001,"无法查询到相关角色"),
-    ROLE_UNCHANGEABLE(12002,"该角色被设定为无法删除"),
-    USER_ROLE_IS_EXIST(12003,"该用户角色已经存在"),
-    ROLE_ALREADY_RELATE_USER(12004,"该角色存在关联用户"),
+    NO_SUCH_ROLE_NAME_PERMISSION(12001, "无法查询到相关角色"),
+    ROLE_UNCHANGEABLE(12002, "该角色被设定为无法删除"),
+    USER_ROLE_IS_EXIST(12003, "该用户角色已经存在"),
+    ROLE_ALREADY_RELATE_USER(12004, "该角色存在关联用户"),
     USER_HAS_INCOMPATIBLE_ROLES(12005, "用户存在与当前创建角色相冲突的角色"),
 
-    PERMISSION_IS_NOT_EXIST(13001,"权限信息不存在"),
+    PERMISSION_IS_NOT_EXIST(13001, "权限信息不存在"),
 
 
     WORKFLOW_AUDITOR_ERROR(23001, "用户不在审核人候选列表"),
@@ -71,9 +71,9 @@ public enum BaseCode {
     BRAND_HAS_BINDED_TO_ERP_SHOP(23003, "品牌已关联到店铺，冻结失败"),
     BRAND_HAS_BINDED_TO_ERP_CONTRACT(23003, "品牌已关联到合同，冻结失败"),
 
-    FORMAL_CONTACTS_NOT_EXIST(41012,"未查到关于您的有效合同信息，请联系管理员"),
+    FORMAL_CONTACTS_NOT_EXIST(41012, "未查到关于您的有效合同信息，请联系管理员"),
 
-    EDIT_SHOP_EXTENDED_NO_ERROR(19100,"更新门店外部单号失败"),
+    EDIT_SHOP_EXTENDED_NO_ERROR(19100, "更新门店外部单号失败"),
 
     FAILD_UPDATE_PRODUCT(24001, "更新商品失败"),
 
@@ -81,23 +81,23 @@ public enum BaseCode {
 
     ROLE_UPDATE_ERROR(25002, "角色更新失败"),
 
-    ROLE_NAME_IS_EXIST_ERROR(25003,"角色名已存在"),
+    ROLE_NAME_IS_EXIST_ERROR(25003, "角色名已存在"),
 
-    ROLE_IS_NOT_EXIST_ERROR(25004,"角色不存在"),
+    ROLE_IS_NOT_EXIST_ERROR(25004, "角色不存在"),
 
     CATALOG_ADD_OVER_LIMIT_ERROR(22006, "品类编码生成超过层级最大值99"),
 
     ACCESS_TOKEN_IS_EMPTY_ERROR(26001, "access_token为空"),
 
-    WECHAT_INFO_NOT_EXIST_ERROR(26002,"未找到相应的公众号信息"),
+    WECHAT_INFO_NOT_EXIST_ERROR(26002, "未找到相应的公众号信息"),
 
-    WECHAT_MENU_CREATE_ERROR(26003,"微信菜单创建失败"),
+    WECHAT_MENU_CREATE_ERROR(26003, "微信菜单创建失败"),
 
-    MALL_IS_NOT_EXIST_ERROR(26004,"商场不存在"),
+    MALL_IS_NOT_EXIST_ERROR(26004, "商场不存在"),
 
-    ALIAS_IS_EXIST_ERROR(26005,"alias已存在在"),
+    ALIAS_IS_EXIST_ERROR(26005, "alias已存在在"),
 
-    MALL_UID_IS_EXIST_ERROR(26006,"该商场已经绑定公众号"),
+    MALL_UID_IS_EXIST_ERROR(26006, "该商场已经绑定公众号"),
 
     BUSINESS_COMPNAY_NAME_ALREDY_REVIEWED(26007, "该商管公司名称已经存在"),
 
@@ -164,11 +164,11 @@ public enum BaseCode {
     FORMAL_CONTRACT_REVIEW_AUDITOR_IS_EMPTY(27004, "正式合同审核不存在审核候选人"),
     INFORMAL_FORMAL_CONTRACT_END_DATE_ERROR(27005, "此合同的结束时间已经小于当前时间，无法继续操作"),
 
-    FAIL_TO_GET_PRICE_INFO(28001,"获取标价签信息失败"),
+    FAIL_TO_GET_PRICE_INFO(28001, "获取标价签信息失败"),
 
-    VENDOR_ID_NUMBER_ALREDY_REVIEWED(29001,"该商户身份证号已经存在"),
+    VENDOR_ID_NUMBER_ALREDY_REVIEWED(29001, "该商户身份证号已经存在"),
 
-    VENDOR_LOGIN_NAME_ALREDY_REVIEWED(29002,"该商户登录账号已经存在"),
+    VENDOR_LOGIN_NAME_ALREDY_REVIEWED(29002, "该商户登录账号已经存在"),
 
     PERSONNEL_ALREADY_EXIST(29101, "人员已存在"),
 
@@ -181,35 +181,35 @@ public enum BaseCode {
 
     CREATE_USER_FAIL(29201, "创建用户失败"),
 
-    ECSALES_IS_EMPTY(29202,"电子销售单为空"),
+    ECSALES_IS_EMPTY(29202, "电子销售单为空"),
 
-    ECSALES_STAGE_PAY_ERROR(29203,"销售单分期支付失败"),
+    ECSALES_STAGE_PAY_ERROR(29203, "销售单分期支付失败"),
 
-    ECSALES_UID_IS_DUPLICATE(29204,"电子销售单保存失败，销售单号重复"),
+    ECSALES_UID_IS_DUPLICATE(29204, "电子销售单保存失败，销售单号重复"),
 
-    ECSALES_FAIL_TO_SAVE(29205,"电子销售单保存失败"),
+    ECSALES_FAIL_TO_SAVE(29205, "电子销售单保存失败"),
 
-    SALE_PAY_INFO_NOT_EXIST_ERROR(29206,"销售单支付详情不存在！"),
+    SALE_PAY_INFO_NOT_EXIST_ERROR(29206, "销售单支付详情不存在！"),
 
-    ORDER_NOT_EXIST_ERROR(29207,"线上订单不存在！"),
+    ORDER_NOT_EXIST_ERROR(29207, "线上订单不存在！"),
 
-    ECSALES_UID_IS_EMPTY(29208,"电子销售单UID为空"),
+    ECSALES_UID_IS_EMPTY(29208, "电子销售单UID为空"),
 
-    ECSALES_PAYAMOUNT_IS_EMPTY(29209,"应付金额为空"),
+    ECSALES_PAYAMOUNT_IS_EMPTY(29209, "应付金额为空"),
 
-    SUSPEND_FORMAL_CONTRACT_ERROR(29301,"中止正式合同出错"),
+    SUSPEND_FORMAL_CONTRACT_ERROR(29301, "中止正式合同出错"),
 
-    NO_PERMISSION(41002,"您暂无权限，请联系管理员"),
+    NO_PERMISSION(41002, "您暂无权限，请联系管理员"),
 
-    ERP_VENDOR_FAILlURE(41003,"您的店铺已失效，请联系管理员"),
+    ERP_VENDOR_FAILlURE(41003, "您的店铺已失效，请联系管理员"),
 
-    ERP_VENDOR_SHOP_NOT_EXIST(41004,"未查到关于您的店铺信息，请联系管理员"),
+    ERP_VENDOR_SHOP_NOT_EXIST(41004, "未查到关于您的店铺信息，请联系管理员"),
 
-    ERP_SHOP_ASSISTANT_FAILlURE(41005,"您的账号处于不在场状态, 请联系管理员"),
+    ERP_SHOP_ASSISTANT_FAILlURE(41005, "您的账号处于不在场状态, 请联系管理员"),
 
-    ERP_SHOP_MANAGER_FAILlURE(41006,"您无权限登陆系统，请联系管理员"),
+    ERP_SHOP_MANAGER_FAILlURE(41006, "您无权限登陆系统，请联系管理员"),
 
-    SHOP_NOT_EXIST(41008,"未查到关于您的店铺信息，请联系管理员"),
+    SHOP_NOT_EXIST(41008, "未查到关于您的店铺信息，请联系管理员"),
 
     STATUS_IS_NOT_OK(41009, "您的账号处于不在场状态, 请联系管理员"),
 
@@ -217,21 +217,19 @@ public enum BaseCode {
 
     OUT_AVAILABLE_TIME(41011, "你的账号已过期， 请联系管理员"),
 
-    CONTACTS_NOT_EXIST(41012,"未查到关于您的有效合同信息，请联系管理员"),
+    CONTACTS_NOT_EXIST(41012, "未查到关于您的有效合同信息，请联系管理员"),
 
-    FORMAL_CONTACTS_NOT_AVAILABLE(41013,"您的合同均已失效或未生效无法登陆，请联系管理员"),
+    FORMAL_CONTACTS_NOT_AVAILABLE(41013, "您的合同均已失效或未生效无法登陆，请联系管理员"),
 
     AUDIT_REVIEW_AUDITOR_IS_EMPTY(51000, "审核不存在审核候选人"),
 
     PRODUCT_USING_BY_OTHER_AUDIT(51001, "商品已被其他审核流程占用，请稍后再试"),
     PRODUCT_ALREADY_RETURNED(51002, "该退货单中存在已退货的商品，审核通过失败"),
 
-    COUPONRULEPO__NOT_CONTINUITY_INTERVAL(61001,"销售区间不是连续的"),
-    CREATE_COUPON_STOCK_NOT_MORE_LIMITRECEIVECOUNT(61002,"创建优惠券失败，库存数没有大于每人领取总数"),
-    CREATE_COUPON_COUPON_PRICE_INCORRECT(61003,"创建优惠券失败，优惠券价值不等于 优惠券面值*增值比率"),
-    CREATE_COUPON_VERIFCATIONDATE_ERROR(61004,"创建优惠券失败，核销结束时间必须晚于核销开始时间")
-
-    ;
+    COUPONRULEPO__NOT_CONTINUITY_INTERVAL(61001, "销售区间不是连续的"),
+    CREATE_COUPON_STOCK_NOT_MORE_LIMITRECEIVECOUNT(61002, "创建优惠券失败，库存数没有大于每人领取总数"),
+    CREATE_COUPON_COUPON_PRICE_INCORRECT(61003, "创建优惠券失败，优惠券价值不等于 优惠券面值*增值比率"),
+    CREATE_COUPON_VERIFCATIONDATE_ERROR(61004, "创建优惠券失败，核销结束时间必须晚于核销开始时间");
 
     private int code;
     private String message;

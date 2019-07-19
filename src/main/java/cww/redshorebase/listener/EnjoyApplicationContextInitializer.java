@@ -10,10 +10,11 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class EnjoyApplicationContextInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
     /**
      * 3 spring 容器初始化
+     *
      * @param applicationContext
      */
     @Override
     public void initialize(ConfigurableApplicationContext applicationContext) {
-        System.out.println("EnjoyApplicationContextInitializer.initialize()执行了"+applicationContext);
+        System.out.println("EnjoyApplicationContextInitializer.initialize()执行了" + applicationContext);
     }
 }

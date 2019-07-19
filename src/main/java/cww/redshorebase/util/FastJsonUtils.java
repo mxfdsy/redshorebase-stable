@@ -20,7 +20,7 @@ import java.util.Objects;
 
 public class FastJsonUtils {
     private static final Logger logger = LoggerFactory.getLogger(FastJsonUtils.class);
-    
+
     private static final SerializeConfig config;
 
     static {
@@ -52,19 +52,20 @@ public class FastJsonUtils {
     public static <T> T toBean(String text, Class<T> clazz) {
         return JSON.parseObject(text, clazz);
     }
-    
+
     // 转换为List
     public static <T> List<T> toList(String text, Class<T> clazz) {
         return JSON.parseArray(text, clazz);
     }
-    
+
     public static <T> T jsonToBeanFromNode(String jsonString, String fieldName, Class<T> clazz) {
         String json = findValue(jsonString, fieldName).toString();
         return FastJsonUtils.toBean(json, clazz);
     }
+
     /***
      * 根据节点来查找
-     * 
+     *
      * @param json
      * @param fieldName
      * @return
@@ -98,6 +99,7 @@ public class FastJsonUtils {
         Map m = JSONObject.parseObject(s);
         return m;
     }
+
     /**
      * jsonArray转换成List
      *
@@ -124,12 +126,12 @@ public class FastJsonUtils {
         jsonObject.put(key, object);
         return jsonObject;
     }
-    
+
     public static boolean isResultSuccess(String json) {
         JSONObject jsonObject = JSON.parseObject(json);
         return jsonObject.getIntValue(Constants.CODE_FLAG) == Constants.SUCCESS_CODE;
     }
-    
+
     public static boolean isResultError(String json) {
         return !isResultSuccess(json);
     }

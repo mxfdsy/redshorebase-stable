@@ -34,7 +34,7 @@ public class ResultBuilderUtils {
         BaseResponseDTO result = new BaseResponseDTO(errorCode.getCode(), errorCode.getMessage());
         return JSON.toJSONString(result);
     }
-    
+
     public static String buildError(BaseCode errorCode, String errorMsg) {
         BaseResponseDTO result = new BaseResponseDTO(errorCode.getCode(), errorCode.getMessage(), errorMsg);
         return JSON.toJSONString(result);

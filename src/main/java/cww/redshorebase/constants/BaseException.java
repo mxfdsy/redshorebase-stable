@@ -1,7 +1,6 @@
 package cww.redshorebase.constants;
 
 
-
 import cww.redshorebase.util.FastJsonUtils;
 
 import java.util.HashMap;
@@ -37,7 +36,7 @@ public class BaseException extends RuntimeException {
     public String toString() {
         Map<String, String> jsonObj = new HashMap<String, String>();
         jsonObj.put(Constants.CODE_FLAG, String.valueOf(error.getCode()));
-        jsonObj.put(Constants.ERROR_MSG_FLAG, error.getMessage()+","+this.getMessage());
+        jsonObj.put(Constants.ERROR_MSG_FLAG, error.getMessage() + "," + this.getMessage());
 
         return FastJsonUtils.toJSONNoFeatures(jsonObj);
 

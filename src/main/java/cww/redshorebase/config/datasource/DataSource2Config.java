@@ -34,12 +34,12 @@ public class DataSource2Config {
 
     @Bean(name = "aliyunDataSource")
     public DataSource testDataSource(DBConfig2 config2) {
-        MysqlXADataSource mysqlXADataSource=new MysqlXADataSource();
+        MysqlXADataSource mysqlXADataSource = new MysqlXADataSource();
         mysqlXADataSource.setUrl(config2.getJdbcUrl());
         mysqlXADataSource.setPassword(config2.getPassword());
         mysqlXADataSource.setUser(config2.getUsername());
 
-        AtomikosDataSourceBean atomikosDataSourceBean=new AtomikosDataSourceBean();
+        AtomikosDataSourceBean atomikosDataSourceBean = new AtomikosDataSourceBean();
         atomikosDataSourceBean.setXaDataSource(mysqlXADataSource);
         atomikosDataSourceBean.setUniqueResourceName("aliyunDatasource");
         return atomikosDataSourceBean;

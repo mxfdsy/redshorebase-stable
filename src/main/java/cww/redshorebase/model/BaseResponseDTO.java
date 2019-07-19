@@ -9,7 +9,7 @@ public class BaseResponseDTO {
 
     @JSONField(name = "error_msg")
     private String errorMsg;
-    
+
     @JSONField(name = "detail")
     private String detail;
 
@@ -19,7 +19,7 @@ public class BaseResponseDTO {
     @JSONField(name = "data")
     private Object data;
 
-    public BaseResponseDTO(){
+    public BaseResponseDTO() {
 
     }
 
@@ -57,7 +57,7 @@ public class BaseResponseDTO {
         this.detail = errorMsg;
         this.requestId = "";
     }
-    
+
     public BaseResponseDTO(int code, String errorMsg) {
         super();
         this.code = code;

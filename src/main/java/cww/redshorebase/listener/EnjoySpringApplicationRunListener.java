@@ -11,12 +11,13 @@ import org.springframework.core.env.ConfigurableEnvironment;
 public class EnjoySpringApplicationRunListener implements SpringApplicationRunListener {
 
     //必须有的构造器
-    public EnjoySpringApplicationRunListener (SpringApplication application, String[] args){
+    public EnjoySpringApplicationRunListener(SpringApplication application, String[] args) {
 
     }
 
     /**
      * 1 、监听器启动
+     *
      * @param
      */
 
@@ -27,6 +28,7 @@ public class EnjoySpringApplicationRunListener implements SpringApplicationRunLi
 
     /**
      * 2、环境准备（3在 EnjoyApplicationContextInitializer.initialize() ）
+     *
      * @param environment
      */
     @Override
@@ -37,6 +39,7 @@ public class EnjoySpringApplicationRunListener implements SpringApplicationRunLi
 
     /**
      * 4 ........
+     *
      * @param context
      */
     @Override
@@ -45,7 +48,8 @@ public class EnjoySpringApplicationRunListener implements SpringApplicationRunLi
     }
 
     /**
-     *  5 、加载上下文
+     * 5 、加载上下文
+     *
      * @param context
      */
     @Override
@@ -56,6 +60,7 @@ public class EnjoySpringApplicationRunListener implements SpringApplicationRunLi
 
     /**
      * 6 、监听器已经启动（7 在 EnjoyApplicationRunner）
+     *
      * @param context
      */
     @Override
@@ -66,6 +71,7 @@ public class EnjoySpringApplicationRunListener implements SpringApplicationRunLi
 
     /**
      * 9 .-------
+     *
      * @param context
      */
     @Override
