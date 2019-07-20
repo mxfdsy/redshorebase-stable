@@ -10,6 +10,66 @@
 	 http://code.alibabatech.com/schema/dubbo
 	 http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-    <dubbo:reference  id="exposeService" interface="com.demo.dubboapi.dubbo.ExposeService"/>
+
+                                        <!--dubbo容错策略-->
+    <!--normal-->
+<!--    <dubbo:reference  id="exposeService" interface="com.demo.dubboapi.dubbo.ExposeService"/>-->
+
+
+    <!--failover 失败快速重试 读操作-->
+<!--    <dubbo:reference  id="exposeService" interface="com.demo.dubboapi.dubbo.ExposeService" -->
+<!--                      cluster="failover" retries="2"/>-->
+
+    <!--failfast 失败直接报错 写操作-->
+<!--    <dubbo:reference  id="exposeService" interface="com.demo.dubboapi.dubbo.ExposeService" cluster="failfast"/>-->
+
+
+
+                                        <!--dubbo负载策略-->
+
+    <!-- 根据提供方设置的权重来访问-->
+<!--    <dubbo:reference  id="exposeService" interface="com.demo.dubboapi.dubbo.ExposeService"-->
+<!--                      cluster="failover" loadbalance="random"/>-->
+
+
+
+    <!-- 轮询-->
+<!--    <dubbo:reference  id="exposeService" interface="com.demo.dubboapi.dubbo.ExposeService"-->
+<!--                      cluster="failover" loadbalance="roundrobin"/>-->
+
+
+    <!--处理的慢的机器收到请求少-->
+<!--    <dubbo:reference  id="exposeService" interface="com.demo.dubboapi.dubbo.ExposeService"-->
+<!--                      cluster="failover" loadbalance="leastactive"/>-->
+
+
+
+                                        <!--dubbo缓存策略-->
+    <!--lru 缓存 -->
+<!--    <dubbo:reference  id="exposeService" interface="com.demo.dubboapi.dubbo.ExposeService"-->
+<!--                      cluster="failover" loadbalance="roundrobin">-->
+<!--        <dubbo:method name="getUserById" cache="lru"/>-->
+<!--    </dubbo:reference>-->
+
+    <!--threadlocal 当前线程的缓存 -->
+<!--    <dubbo:reference  id="exposeService" interface="com.demo.dubboapi.dubbo.ExposeService"-->
+<!--                      cluster="failover" loadbalance="roundrobin">-->
+<!--        <dubbo:method name="getUserById" cache="threadlocal"/>-->
+<!--    </dubbo:reference>-->
+
+
+                                        <!--dubbo异步的调用 看看就好 一般用mq 和java8 的future-->
+
+                                        <!--dubbo 事件通知-->
+
+    <!--callback-->
+    <dubbo:reference  id="exposeService" interface="com.demo.dubboapi.dubbo.ExposeService"
+                      cluster="failover" loadbalance="roundrobin">
+        <dubbo:method name="getUserById" cache="lru"/>
+        <dubbo:method name="callbackDemo"
+                      onreturn="callBack.onSuccess"
+                      onthrow="callBack.onError"/>
+    </dubbo:reference>
+
 
 </beans>
