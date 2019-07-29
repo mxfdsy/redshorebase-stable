@@ -62,11 +62,12 @@
 
                                         <!--dubbo 事件通知-->
 
-    <!--callback-->
+    <!--callback  （async="ture" 不会给前端返回值）-->
     <dubbo:reference  id="exposeService" interface="com.demo.dubboapi.dubbo.ExposeService"
                       cluster="failover" loadbalance="roundrobin">
         <dubbo:method name="getUserById" cache="lru"/>
         <dubbo:method name="callbackDemo"
+
                       onreturn="callBack.onSuccess"
                       onthrow="callBack.onError"/>
     </dubbo:reference>
