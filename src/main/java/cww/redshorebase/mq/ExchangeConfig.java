@@ -195,7 +195,7 @@ public class ExchangeConfig {
         return QueueBuilder.durable("xxxxx")
                 .withArgument("x-dead-letter-exchange", "xxx-exchange") // DLX
                 .withArgument("x-dead-letter-routing-key", "delay_process_queue") // dead letter携带的routing key
-                .withArgument("x-message-ttl", 2000) // 设置队列的过期时间
+                .withArgument("x-message-ttl", 10000) // 设置队列的过期时间
                 .build();
     }
 

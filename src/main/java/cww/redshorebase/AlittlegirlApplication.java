@@ -15,6 +15,16 @@ import org.springframework.context.annotation.ImportResource;
 public class AlittlegirlApplication {
 
     public static void main(String[] args) {
+
+
         SpringApplication.run(AlittlegirlApplication.class, args);
     }
+
+//    @Bean
+//    public DefaultRedisScript<List> defaultRedisScript() {
+//        DefaultRedisScript<List> defaultRedisScript = new DefaultRedisScript<>();
+//        defaultRedisScript.setResultType(List.class);
+//        defaultRedisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource("redis/demo.lua")));
+//        return defaultRedisScript;
+//    }
 }
