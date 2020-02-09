@@ -234,5 +234,18 @@ public class DemoController {
         return ResultBuilderUtils.buildSuccess(orderFromAliYun);
     }
 
+    @RequestMapping(value = "/put", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String put(Users users) {
+        return ResultBuilderUtils.buildSuccess(Constants.SUCCESS);
+    }
+
+
+
+    @RequestMapping(value = "/get", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String get(Users users) {
+        return ResultBuilderUtils.buildSuccess(Constants.SUCCESS);
+    }
 
 }
